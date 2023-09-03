@@ -9,7 +9,6 @@
 <div class="register">
 <h2>Ludo Tournament Registration Form</h2>
 <form id="register" method="post">
-<form action="save.php" method="post"></form>
 <label>Your Name</label>
 <br>
 <input type="text" name="fname" id="name" placeholder="Enter Your Name">
@@ -67,5 +66,21 @@ e.preventDefault();
 </div>
 </div><!--end register-->
 </div><!--end main-->
+<form name="submit-to-google-sheet">
+    <input name="email" type="email" placeholder="Email" required>
+    <button type="submit">Send</button>
+  </form>
+  
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxVfd-CCcU73frR9kuynj1SbBkAl9tLQppkDmmdbK-l8Frd6i3NFwTI2VavVT6GG0yo/exec '
+    const form = document.forms['submit-to-google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 </body>
 </html>
