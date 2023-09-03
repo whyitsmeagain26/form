@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ludo Tournament Registration Form</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div class ="main">
+<div class="register">
+<h2>Ludo Tournament Registration Form</h2>
+<form id="register" method="post">
+<form action="save.php" method="post"></form>
+<label>Your Name</label>
+<br>
+<input type="text" name="fname" id="name" placeholder="Enter Your Name">
+<br><br>
+<label>Your Partner Name</label>
+<br>
+<input type="text" name="pname" id="name" placeholder="Enter Your Partner Name">
+<br><br>
+<label>Your Twitter Username</label>
+<br>
+<input type="text" name="Username" id="name" placeholder="Enter Your Username">
+<br><br>
+<label>Your Partner Twitter Username</label>
+<br>
+<input type="text" name="Username" id="name" placeholder="Enter Your Partner Username">
+<br><br>
+<label for="teamSelect">Team Name</label>
+<select id="teamSelect" name="team">
+<option value="team1">Falcons</option>
+<option value="team2">Friendzones</option>
+<option value="team3">Friends Valley</option>
+<option value="team4">Marcos</option>
+</select>
+<br><br>
+<button id="submitBtn" type="submit">Submit</button>
+</form>
+<div id="teamList">
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+const teamSelect = document.getElementById('teamSelect');
+const teamList = document.getElementById('teamList');
+const submitBtn = document.getElementById('submitBtn');
+const selectedTeams = new Set();
+function updateTeamList() {
+teamList.innerHTML = '' ;
+selectedTeams.forEach(team => {
+const teamListItem = document.createElement('p');
+teamListItem.textContent = team;
+teamList.appendChild(teamListItem);
+});
+}
+teamSelect.addEventListener('change', function () {
+const selectedTeam = this.value;
+if (selectedTeam) {
+selectedTeams.add(selectedTeam);
+updateTeamList();
+this.value ='';
+}
+});
+submitBtn.addEventListener('click', function (e) {
+e.preventDefault();
+});
+});
+</script>
+</div>
+</div><!--end register-->
+</div><!--end main-->
+</body>
+</html>
